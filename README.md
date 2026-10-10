@@ -96,7 +96,8 @@ cd backend
 ./mvnw spring-boot:run
 ```
 
-On Windows, use `mvnw.cmd spring-boot:run` instead.
+On Windows PowerShell, run `.\mvnw.cmd spring-boot:run` (PowerShell does not run
+commands from the current directory unless you prefix them with `.\`).
 
 The API starts on **http://localhost:8080**.
 
@@ -198,9 +199,15 @@ After we review your submission, we will schedule a short call. Be ready to disc
 ## Troubleshooting
 
 **Backend won't start**
-- Ensure Java 17+ is installed: `java --version`
+- Ensure a Java 17 JDK is installed: `java --version`. If Java is missing,
+  install a JDK such as Eclipse Temurin 17, then open a new terminal.
+- If Maven reports that `JAVA_HOME` is not defined correctly, set `JAVA_HOME`
+  to the JDK installation directory (for example,
+  `C:\Program Files\Eclipse Adoptium\jdk-17...`), not its `bin` directory.
+  Add `%JAVA_HOME%\bin` to `Path`, open a new terminal, and verify
+  `java --version` and `$env:JAVA_HOME` in PowerShell.
 - On macOS, if you get `Permission denied`, run: `chmod +x backend/mvnw`
-- On Windows, use `mvnw.cmd` instead of `./mvnw`
+- On Windows PowerShell, use `.\mvnw.cmd spring-boot:run`.
 - Check that port 8080 is free: `lsof -i :8080` (macOS/Linux) or `netstat -ano | findstr :8080` (Windows)
 
 **Frontend won't start**
